@@ -64,4 +64,6 @@
     </item>
     <item android:id="@+id/default_none"
         android:title="Default"/>
+    <item android:id="@+id/graphic_only"
+        android:title="Upload Graphics"/>
 </menu>

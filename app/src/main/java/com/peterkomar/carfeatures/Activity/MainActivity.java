@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.peterkomar.carfeatures.BuildConfig;
 import com.peterkomar.carfeatures.Car.Commands;
 import com.peterkomar.carfeatures.R;
 
@@ -32,18 +33,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupMessagesChannel();
-
-        //connectToSDL();
-        manticore();
+        connectToSDL();
     }
 
     private void connectToSDL() {
-        SdlReceiver.queryForConnectedService(this);
-    }
-
-    private void manticore() {
-        Intent sdlServiceIntent = new Intent(this, SdlService.class);
-        startService(sdlServiceIntent);
+        if(BuildConfig.TRANSPORT.equals("MULTI") || BuildConfig.TRANSPORT.equals("MULTI_HB")) {
+            SdlReceiver.queryForConnectedService(this);
+        } else if(BuildConfig.TRANSPORT.equals("TCP")) {
+            Intent proxyIntent = new Intent(this, SdlService.class);
+            startService(proxyIntent);
+        }
     }
 
     private void setupMessagesChannel() {
@@ -85,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.default_none:
                 intent.putExtra(COMMAND_ACTION_NAME, 0);
+                sendBroadcast(intent);
+                break;
+            case R.id.graphic_only:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHICS_UPLOAD);
                 sendBroadcast(intent);
                 break;
             case R.id.media:

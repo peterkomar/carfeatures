@@ -45,6 +45,14 @@ public class SdlService extends Service {
 
 	private static final int FOREGROUND_SERVICE_ID = 550;
 
+	// Manticore
+	private static final int TCP_PORT = 15668;
+	private static final String DEV_MACHINE_IP_ADDRESS = "m.sdl.tools";
+
+	// Sync Emulator
+	//private static final int TCP_PORT = 12345;
+	//private static final String DEV_MACHINE_IP_ADDRESS =  "192.168.0.107";
+
 	// variable to create and call functions of the SyncProxy
 	private SdlManager sdlManager = null;
 
@@ -133,6 +141,9 @@ public class SdlService extends Service {
 					securityLevel = MultiplexTransportConfig.FLAG_MULTI_SECURITY_OFF;
 				}
 				transport = new MultiplexTransportConfig(this, BuildConfig.APP_ID, securityLevel);
+			} else if (BuildConfig.TRANSPORT.equals("TCP")) {
+				transport = new TCPTransportConfig(TCP_PORT, DEV_MACHINE_IP_ADDRESS,
+						true);
 			} else if (BuildConfig.TRANSPORT.equals("MULTI_HB")) {
 				MultiplexTransportConfig mtc = new MultiplexTransportConfig(this, BuildConfig.APP_ID,
 						MultiplexTransportConfig.FLAG_MULTI_SECURITY_OFF);
@@ -202,7 +213,7 @@ public class SdlService extends Service {
 					BuildConfig.APP_NAME,
 					listener);
 			builder.setAppTypes(appType);
-			setTransport(builder, transport);
+			builder.setTransportType(transport);
 			builder.setAppIcon(appIcon);
 			builder.setLockScreenConfig(getLockScreenConfig());
 			builder.setMinimumProtocolVersion(new Version("2.0.0"));
@@ -218,17 +229,6 @@ public class SdlService extends Service {
 		LockScreenConfig lockScreenConfig = new LockScreenConfig();
 		lockScreenConfig.setAppIcon(com.peterkomar.carfeatures.R.mipmap.ic_launcher);
 		return lockScreenConfig;
-	}
-
-	private void setTransport(SdlManager.Builder builder, BaseTransportConfig transport) {
-		// For production
-		//builder.setTransportType(transport);
-
-		// DEVELOPMENT CODE
-		// for manticore
-		builder.setTransportType(new TCPTransportConfig(19341, "m.sdl.tools", true));
-		// for sync emulators
-		//builder.setTransportType(new TCPTransportConfig(12345, "192.168.0.107", true));
 	}
 
 	public void updateMessagesLog() {

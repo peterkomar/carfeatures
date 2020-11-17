@@ -65,6 +65,8 @@ public class CarManager {
             case Commands.LARGE_GRAPHIC_ONLY: tempate.setLargeGraphicOnly(); break;
             case Commands.WEB_VIEW: tempate.setWebView(); break;
 
+            case Commands.GRAPHICS_UPLOAD: setUploadGraphics(); break;
+
             case Commands.FUEL: vehicle.getFuel(); break;
             case Commands.FUEL_RANGE:vehicle.getFuelRange(); break;
             case Commands.PRESSURE: vehicle.getPressure(); break;
@@ -91,6 +93,25 @@ public class CarManager {
                 Messages.info("setDefaultText fail");
             }
             sdlService.updateMessagesLog();
+        });
+    }
+
+    private void setUploadGraphics() {
+
+        Picture carPicture = new Picture();
+
+        sdlManager.getScreenManager().beginTransaction();
+        sdlManager.getScreenManager().setPrimaryGraphic(carPicture.renderSmall());
+        sdlManager.getScreenManager().commit(new CompletionListener() {
+            @Override
+            public void onComplete(boolean success) {
+                if (success) {
+                    Messages.info("Graphic ok ");
+                } else {
+                    Messages.info("Graphic fail");
+                }
+                sdlService.updateMessagesLog();
+            }
         });
     }
 }
