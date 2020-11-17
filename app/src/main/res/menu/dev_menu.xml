@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/layouts"
+        android:title="Layouts">
+        <menu>
+            <item android:id="@+id/default_l"
+                android:title="default" />
+            <item android:id="@+id/media"
+                android:title="media" />
+            <item android:id="@+id/non_media"
+                android:title="non_media" />
+            <item android:id="@+id/onscreen_presets"
+                android:title="onscreen_presets" />
+            <item android:id="@+id/nav_fullscreen_map"
+                android:title="nav_fullscreen_map" />
+            <item android:id="@+id/nav_list"
+                android:title="nav_list" />
+            <item android:id="@+id/graphic_with_text"
+                android:title="graphic_with_text" />
+            <item android:id="@+id/text_with_graphic"
+                android:title="text_with_graphic" />
+            <item android:id="@+id/tiles_only"
+                android:title="tiles_only" />
+            <item android:id="@+id/textbuttons_only"
+                android:title="textbuttons_only" />
+            <item android:id="@+id/graphic_with_tiles"
+                android:title="graphic_with_tiles" />
+            <item android:id="@+id/tiles_with_graphic"
+                android:title="tiles_with_graphic" />
+            <item android:id="@+id/graphic_with_text_and_softbuttons"
+                android:title="graphic_with_text_and_softbuttons" />
+            <item android:id="@+id/text_and_softbuttons_with_graphic"
+                android:title="text_and_softbuttons_with_graphic" />
+            <item android:id="@+id/graphic_with_textbuttons"
+                android:title="graphic_with_textbuttons" />
+            <item android:id="@+id/textbuttons_with_graphic"
+                android:title="textbuttons_with_graphic" />
+            <item android:id="@+id/large_graphic_with_softbuttons"
+                android:title="large_graphic_with_softbuttons" />
+            <item android:id="@+id/double_graphic_with_softbuttons"
+                android:title="double_graphic_with_softbuttons" />
+            <item android:id="@+id/large_graphic_only"
+                android:title="large_graphic_only" />
+            <item android:id="@+id/web_view"
+                android:title="web_view" />
+        </menu>
+    </item>
+    <item android:id="@+id/vehicle"
+        android:title="Vehicle">
+        <menu>
+            <item android:id="@+id/fuel"
+                android:title="Fuel" />
+            <item android:id="@+id/fuelrange"
+                android:title="Fuel Range" />
+            <item android:id="@+id/pressure"
+                android:title="Tyre Pressure" />
+            <item android:id="@+id/oil"
+                android:title="Oil Life" />
+            <item android:id="@+id/vin"
+                android:title="VIN code" />
+            <item android:id="@+id/gps"
+                android:title="GPS" />
+        </menu>
+    </item>
+    <item android:id="@+id/default_none"
+        android:title="Default"/>
+</menu>

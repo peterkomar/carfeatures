@@ -1,2 +1,3 @@
 # carfeatures
-Test features of head unit which support SDL (Smart Device Link)
+
+Test car head unit features which support SDL (Smart Device Link)
