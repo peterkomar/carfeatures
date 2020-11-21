@@ -86,10 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, 0);
                 sendBroadcast(intent);
                 break;
-            case R.id.graphic_only:
-                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHICS_UPLOAD);
-                sendBroadcast(intent);
-                break;
             case R.id.media:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.MEDIA);
                 sendBroadcast(intent);
@@ -167,6 +163,38 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
                 break;
 
+            case R.id.primary_grapics:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHICS_UPLOAD);
+                sendBroadcast(intent);
+                break;
+            case R.id.text_fields:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.TEXT_FIELDS);
+                sendBroadcast(intent);
+                break;
+            case R.id.graphic_secondary:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHIC_SECONDARY);
+                sendBroadcast(intent);
+                break;
+            case R.id.graphic_static:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHIC_STATIC);
+                sendBroadcast(intent);
+                break;
+            case R.id.upload_file:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.UPLOAD_FILE);
+                sendBroadcast(intent);
+                break;
+            case R.id.alert:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.ALERT);
+                sendBroadcast(intent);
+                break;
+            case R.id.scroll_message:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.SCROLLABLE_MESSAGE);
+                sendBroadcast(intent);
+                break;
+            case R.id.scroll_message_ua:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.SCROLLABLE_MESSAGE_UA);
+                sendBroadcast(intent);
+                break;
 
             case R.id.fuel:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.FUEL);

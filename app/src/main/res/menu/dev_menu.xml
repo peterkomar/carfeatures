@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/default_none"
+        android:title="Default"/>
     <item android:id="@+id/layouts"
         android:title="Layouts">
         <menu>
@@ -62,8 +64,25 @@
                 android:title="GPS" />
         </menu>
     </item>
-    <item android:id="@+id/default_none"
-        android:title="Default"/>
-    <item android:id="@+id/graphic_only"
-        android:title="Upload Graphics"/>
+    <item android:id="@+id/nolayout"
+        android:title="No Layouts">
+        <menu>
+            <item android:id="@+id/text_fields"
+                android:title="text_fields"/>
+            <item android:id="@+id/primary_grapics"
+                android:title="Upload Primary Graphics"/>
+            <item android:id="@+id/graphic_secondary"
+                android:title="Graphic Secondary"/>
+            <item android:id="@+id/graphic_static"
+                android:title="Graphic Static"/>
+            <item android:id="@+id/upload_file"
+                android:title="Upload File"/>
+            <item android:id="@+id/alert"
+                android:title="Alert"/>
+            <item android:id="@+id/scroll_message"
+                android:title="Scroll Message"/>
+            <item android:id="@+id/scroll_message_ua"
+                android:title="Scroll Message_ua"/>
+        </menu>
+    </item>
 </menu>

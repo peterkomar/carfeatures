@@ -22,12 +22,20 @@ public class Commands {
     public static final int LARGE_GRAPHIC_ONLY = 19;
     public static final int WEB_VIEW = 20;
 
-    public static final int GRAPHICS_UPLOAD = 21;
-
     public static final int FUEL = 30;
     public static final int PRESSURE = 31;
     public static final int OIL = 32;
     public static final int FUEL_RANGE = 33;
     public static final int VIN = 34;
     public static final int GPS = 35;
+
+    public static final int GRAPHICS_UPLOAD = 40;
+    public static final int TEXT_FIELDS = 41;
+    public static final int GRAPHIC_SECONDARY = 42;
+    public static final int GRAPHIC_STATIC = 43;
+    public static final int UPLOAD_FILE = 44;
+    public static final int ALERT = 45;
+    public static final int SCROLLABLE_MESSAGE = 46;
+    public static final int SCROLLABLE_MESSAGE_UA = 47;
+
 }

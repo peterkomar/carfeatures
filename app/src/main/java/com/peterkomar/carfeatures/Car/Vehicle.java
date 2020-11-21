@@ -44,7 +44,7 @@ public class Vehicle extends CarManager {
     }
 
     public void getFuelRange() {
-        GetVehicleData vdRequest = new GetVehicleData();
+        /*GetVehicleData vdRequest = new GetVehicleData();
         Messages.info("Getting fuel range...");
         sdlService.updateMessagesLog();
         vdRequest.setFuelRange(true);
@@ -69,7 +69,7 @@ public class Vehicle extends CarManager {
                 sdlService.updateMessagesLog();
             }
         });
-        sdlManager.sendRPC(vdRequest);
+        sdlManager.sendRPC(vdRequest);*/
     }
 
     public void getPressure() {

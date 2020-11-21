@@ -31,6 +31,7 @@ public class CarManager {
 
     private Templates tempate;
     private Vehicle vehicle;
+    private Display display;
 
     public CarManager(final SdlManager sdl, SdlService service) {
         sdlManager = sdl;
@@ -40,6 +41,7 @@ public class CarManager {
     public void bootstrap() {
         tempate = new Templates(sdlManager, sdlService);
         vehicle = new Vehicle(sdlManager, sdlService);
+        display = new Display(sdlManager, sdlService);
     }
 
     public void runCommand(int command) {
@@ -65,7 +67,14 @@ public class CarManager {
             case Commands.LARGE_GRAPHIC_ONLY: tempate.setLargeGraphicOnly(); break;
             case Commands.WEB_VIEW: tempate.setWebView(); break;
 
-            case Commands.GRAPHICS_UPLOAD: setUploadGraphics(); break;
+            case Commands.GRAPHICS_UPLOAD: display.setUploadGraphics(); break;
+            case Commands.TEXT_FIELDS: display.setTextsFields(); break;
+            case Commands.GRAPHIC_SECONDARY: display.setUploadGraphicsSecondary(); break;
+            case Commands.GRAPHIC_STATIC: display.setUploadGraphicsStatic(); break;
+            case Commands.UPLOAD_FILE: display.uploadFile(); break;
+            case Commands.ALERT: display.setAlert(); break;
+            case Commands.SCROLLABLE_MESSAGE: display.showScrollableMessage(); break;
+            case Commands.SCROLLABLE_MESSAGE_UA: display.showScrollableMessageUA(); break;
 
             case Commands.FUEL: vehicle.getFuel(); break;
             case Commands.FUEL_RANGE:vehicle.getFuelRange(); break;
@@ -96,22 +105,4 @@ public class CarManager {
         });
     }
 
-    private void setUploadGraphics() {
-
-        Picture carPicture = new Picture();
-
-        sdlManager.getScreenManager().beginTransaction();
-        sdlManager.getScreenManager().setPrimaryGraphic(carPicture.renderSmall());
-        sdlManager.getScreenManager().commit(new CompletionListener() {
-            @Override
-            public void onComplete(boolean success) {
-                if (success) {
-                    Messages.info("Graphic ok ");
-                } else {
-                    Messages.info("Graphic fail");
-                }
-                sdlService.updateMessagesLog();
-            }
-        });
-    }
 }
