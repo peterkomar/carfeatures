@@ -187,12 +187,20 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.ALERT);
                 sendBroadcast(intent);
                 break;
+            case R.id.alert_static:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.ALERT_STATIC);
+                sendBroadcast(intent);
+                break;
             case R.id.scroll_message:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.SCROLLABLE_MESSAGE);
                 sendBroadcast(intent);
                 break;
             case R.id.scroll_message_ua:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.SCROLLABLE_MESSAGE_UA);
+                sendBroadcast(intent);
+                break;
+            case R.id.remote_files:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.REMOTE_FILES);
                 sendBroadcast(intent);
                 break;
 
@@ -218,6 +226,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.gps:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.GPS);
+                sendBroadcast(intent);
+                break;
+            case R.id.temperature:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_EXTERNAL_TEMPERATURE);
+                sendBroadcast(intent);
+                break;
+            case R.id.odometer:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_ODOMETER);
+                sendBroadcast(intent);
+                break;
+            case R.id.gear_status:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_GEAR_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.prndl:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_PRNDL);
+                sendBroadcast(intent);
+                break;
+
+            case R.id.image_fields:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_IMAGE_FIELDS);
                 sendBroadcast(intent);
                 break;
             default:

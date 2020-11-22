@@ -1,28 +1,8 @@
 package com.peterkomar.carfeatures.Car;
 
-import android.annotation.SuppressLint;
-
 import com.peterkomar.carfeatures.Activity.Messages;
 import com.peterkomar.carfeatures.SmartDeviceLink.SdlService;
-import com.smartdevicelink.managers.CompletionListener;
 import com.smartdevicelink.managers.SdlManager;
-import com.smartdevicelink.managers.screen.SoftButtonObject;
-import com.smartdevicelink.managers.screen.SoftButtonState;
-import com.smartdevicelink.managers.screen.menu.MenuCell;
-import com.smartdevicelink.managers.screen.menu.MenuSelectionListener;
-import com.smartdevicelink.proxy.RPCResponse;
-import com.smartdevicelink.proxy.rpc.GPSData;
-import com.smartdevicelink.proxy.rpc.GetVehicleData;
-import com.smartdevicelink.proxy.rpc.GetVehicleDataResponse;
-import com.smartdevicelink.proxy.rpc.OnButtonEvent;
-import com.smartdevicelink.proxy.rpc.OnButtonPress;
-import com.smartdevicelink.proxy.rpc.TemplateConfiguration;
-import com.smartdevicelink.proxy.rpc.enums.PredefinedLayout;
-import com.smartdevicelink.proxy.rpc.enums.TriggerSource;
-import com.smartdevicelink.proxy.rpc.listeners.OnRPCResponseListener;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 public class CarManager {
 
@@ -32,6 +12,7 @@ public class CarManager {
     private Templates tempate;
     private Vehicle vehicle;
     private Display display;
+    private Compatibilities compatibility;
 
     public CarManager(final SdlManager sdl, SdlService service) {
         sdlManager = sdl;
@@ -42,6 +23,7 @@ public class CarManager {
         tempate = new Templates(sdlManager, sdlService);
         vehicle = new Vehicle(sdlManager, sdlService);
         display = new Display(sdlManager, sdlService);
+        compatibility = new Compatibilities(sdlManager, sdlService);
     }
 
     public void runCommand(int command) {
@@ -73,15 +55,23 @@ public class CarManager {
             case Commands.GRAPHIC_STATIC: display.setUploadGraphicsStatic(); break;
             case Commands.UPLOAD_FILE: display.uploadFile(); break;
             case Commands.ALERT: display.setAlert(); break;
+            case Commands.ALERT_STATIC: display.setAlertStaticImage(); break;
             case Commands.SCROLLABLE_MESSAGE: display.showScrollableMessage(); break;
             case Commands.SCROLLABLE_MESSAGE_UA: display.showScrollableMessageUA(); break;
+            case Commands.REMOTE_FILES: display.getRemoveFiles(); break;
 
             case Commands.FUEL: vehicle.getFuel(); break;
-            case Commands.FUEL_RANGE:vehicle.getFuelRange(); break;
+            case Commands.FUEL_RANGE: vehicle.getFuelRange(); break;
             case Commands.PRESSURE: vehicle.getPressure(); break;
             case Commands.OIL: vehicle.getOilLife(); break;
             case Commands.VIN: vehicle.getVinCode(); break;
             case Commands.GPS: vehicle.getGps(); break;
+            case Commands.CAR_EXTERNAL_TEMPERATURE: vehicle.getExternalTemperature(); break;
+            case Commands.CAR_ODOMETER: vehicle.getOdometer(); break;
+            case Commands.CAR_GEAR_STATUS: vehicle.getGearGearStatus(); break;
+            case Commands.CAR_PRNDL: vehicle.getPrndl(); break;
+
+            case Commands.COMPATIBILITY_IMAGE_FIELDS: compatibility.getSupportedImageFields(); break;
 
             default:
                 setDefaultText();

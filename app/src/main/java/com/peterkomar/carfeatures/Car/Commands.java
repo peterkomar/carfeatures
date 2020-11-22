@@ -28,6 +28,11 @@ public class Commands {
     public static final int FUEL_RANGE = 33;
     public static final int VIN = 34;
     public static final int GPS = 35;
+    public static final int CAR_EXTERNAL_TEMPERATURE = 36;
+    public static final int CAR_ODOMETER = 38;
+    public static final int CAR_GEAR_STATUS = 39;
+    public static final int CAR_PRNDL = 390;
+
 
     public static final int GRAPHICS_UPLOAD = 40;
     public static final int TEXT_FIELDS = 41;
@@ -35,7 +40,10 @@ public class Commands {
     public static final int GRAPHIC_STATIC = 43;
     public static final int UPLOAD_FILE = 44;
     public static final int ALERT = 45;
-    public static final int SCROLLABLE_MESSAGE = 46;
-    public static final int SCROLLABLE_MESSAGE_UA = 47;
+    public static final int ALERT_STATIC = 46;
+    public static final int SCROLLABLE_MESSAGE = 47;
+    public static final int SCROLLABLE_MESSAGE_UA = 48;
+    public static final int REMOTE_FILES = 49;
 
+    public static final int COMPATIBILITY_IMAGE_FIELDS = 50;
 }

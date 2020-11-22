@@ -8,8 +8,10 @@ import com.smartdevicelink.managers.SdlManager;
 import com.smartdevicelink.proxy.RPCResponse;
 import com.smartdevicelink.proxy.rpc.FuelRange;
 import com.smartdevicelink.proxy.rpc.GPSData;
+import com.smartdevicelink.proxy.rpc.GearStatus;
 import com.smartdevicelink.proxy.rpc.GetVehicleData;
 import com.smartdevicelink.proxy.rpc.GetVehicleDataResponse;
+import com.smartdevicelink.proxy.rpc.enums.PRNDL;
 import com.smartdevicelink.proxy.rpc.listeners.OnRPCResponseListener;
 
 import java.util.List;
@@ -44,7 +46,7 @@ public class Vehicle extends CarManager {
     }
 
     public void getFuelRange() {
-        /*GetVehicleData vdRequest = new GetVehicleData();
+        GetVehicleData vdRequest = new GetVehicleData();
         Messages.info("Getting fuel range...");
         sdlService.updateMessagesLog();
         vdRequest.setFuelRange(true);
@@ -69,7 +71,7 @@ public class Vehicle extends CarManager {
                 sdlService.updateMessagesLog();
             }
         });
-        sdlManager.sendRPC(vdRequest);*/
+        sdlManager.sendRPC(vdRequest);
     }
 
     public void getPressure() {
@@ -155,6 +157,98 @@ public class Vehicle extends CarManager {
                     sdlService.updateMessagesLog();
                 } else {
                     Messages.info("GPS fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getExternalTemperature() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("Getting external temperature ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setExternalTemperature(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Double temperature = ((GetVehicleDataResponse) response).getExternalTemperature();
+                    Messages.info("External Temperature: " + temperature);
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("External Temperature fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getOdometer() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("Getting odometer ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setOdometer(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Integer odometer = ((GetVehicleDataResponse) response).getOdometer();
+                    Messages.info("Odometer: " + odometer);
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("Odometer fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getGearGearStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("Getting gear status ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setGearStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    GearStatus gearStatus = ((GetVehicleDataResponse) response).getGearStatus();
+                    Messages.info("User Gear: " + gearStatus.getUserSelectedGear().toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("User Gear fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getPrndl() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("Getting prndl ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setPrndl(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    PRNDL prndl = ((GetVehicleDataResponse) response).getPrndl();
+                    Messages.info("PRNDL: " + prndl.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("PRNDL fail");
                 }
                 sdlService.updateMessagesLog();
             }

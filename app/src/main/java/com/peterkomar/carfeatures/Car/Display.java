@@ -10,6 +10,7 @@ import com.smartdevicelink.proxy.RPCNotification;
 import com.smartdevicelink.proxy.RPCResponse;
 import com.smartdevicelink.proxy.rpc.Alert;
 import com.smartdevicelink.proxy.rpc.Image;
+import com.smartdevicelink.proxy.rpc.ImageField;
 import com.smartdevicelink.proxy.rpc.OnButtonPress;
 import com.smartdevicelink.proxy.rpc.ScrollableMessage;
 import com.smartdevicelink.proxy.rpc.SoftButton;
@@ -149,6 +150,44 @@ public class Display extends CarManager {
         sdlManager.sendRPC(alert);
     }
 
+    public void setAlertStaticImage() {
+        Alert alert = new Alert();
+        alert.setAlertText1("Line 1");
+        alert.setAlertText2("Line 2");
+        alert.setAlertText3("Line 3");
+
+        final int softButtonId = 123; // Set it to any unique ID
+        SoftButton okButton = new SoftButton(SoftButtonType.SBT_TEXT, softButtonId);
+        okButton.setText("OK");
+
+        alert.setSoftButtons(Collections.singletonList(okButton));
+
+        sdlManager.addOnRPCNotificationListener(FunctionID.ON_BUTTON_PRESS, new OnRPCNotificationListener() {
+            @Override
+            public void onNotified(RPCNotification notification) {
+                OnButtonPress onButtonPress = (OnButtonPress) notification;
+                if (onButtonPress.getCustomButtonID() == softButtonId){
+                    Messages.info("Alert OK pressed");
+                    sdlService.updateMessagesLog();
+                }
+            }
+        });
+
+        alert.setAlertIcon(new Image(StaticIconName.BATTERY_CAPACITY_4_OF_5.toString(), ImageType.STATIC));
+
+        // Handle RPC response
+        alert.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                if (response.getSuccess()){
+                    Messages.info("Alert was shown successfully");
+                    sdlService.updateMessagesLog();
+                }
+            }
+        });
+        sdlManager.sendRPC(alert);
+    }
+
     public void showScrollableMessage() {
         String scrollableMessageText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Purus in massa tempor nec feugiat nisl pretium fusce id. Pharetra convallis posuere morbi leo urna molestie at elementum eu. Dictum sit amet justo donec enim diam.";
 
@@ -163,6 +202,18 @@ public class Display extends CarManager {
         ScrollableMessage scrollableMessage = new ScrollableMessage();
         scrollableMessage.setScrollableMessageBody(scrollableMessageText);
         sdlManager.sendRPC(scrollableMessage);
+    }
+
+    public void getRemoveFiles() {
+        List<String> files = sdlManager.getFileManager().getRemoteFileNames();
+        final int size = files.size();
+        Messages.info("Remove files: ");
+        for (int i = 0; i < size; i++)
+        {
+            String file = files.get(i);
+            Messages.info(file);
+        }
+        sdlService.updateMessagesLog();
     }
 
 }
