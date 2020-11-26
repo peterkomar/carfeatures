@@ -72,6 +72,7 @@ public class CarManager {
             case Commands.CAR_PRNDL: vehicle.getPrndl(); break;
 
             case Commands.COMPATIBILITY_IMAGE_FIELDS: compatibility.getSupportedImageFields(); break;
+            case Commands.COMPATIBILITY_TEXT_FIELDS: compatibility.getSupportedTextFields(); break;
 
             default:
                 setDefaultText();
@@ -82,9 +83,9 @@ public class CarManager {
         sdlManager.getScreenManager().beginTransaction();
         sdlManager.getScreenManager().setTextField1("Hello text one");
         sdlManager.getScreenManager().setTextField2("Hello text two");
-        sdlManager.getScreenManager().setTextField3("Hello text three");
-        sdlManager.getScreenManager().setTextField4("Hello text four");
-        sdlManager.getScreenManager().setMediaTrackTextField("Media Track Field");
+        sdlManager.getScreenManager().setTextField3("- ok <||==||> ok");
+        sdlManager.getScreenManager().setTextField4("- ok <||==||> ok");
+        sdlManager.getScreenManager().setMediaTrackTextField("Wheels statuses");
         sdlManager.getScreenManager().commit(success -> {
             if (success) {
                 Messages.info("setDefaultText ok ");

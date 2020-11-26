@@ -102,6 +102,8 @@
         <menu>
             <item android:id="@+id/image_fields"
                 android:title="Get Image fields"/>
+            <item android:id="@+id/compatibility_text_fields"
+            android:title="Get Text fields"/>
         </menu>
     </item>
 </menu>

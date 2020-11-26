@@ -46,4 +46,5 @@ public class Commands {
     public static final int REMOTE_FILES = 49;
 
     public static final int COMPATIBILITY_IMAGE_FIELDS = 50;
+    public static final int COMPATIBILITY_TEXT_FIELDS = 51;
 }

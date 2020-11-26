@@ -249,6 +249,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_IMAGE_FIELDS);
                 sendBroadcast(intent);
                 break;
+            case R.id.compatibility_text_fields:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_TEXT_FIELDS);
+                sendBroadcast(intent);
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
