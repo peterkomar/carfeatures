@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/default_none"
+        android:title="Default"/>
     <item android:id="@+id/layouts"
         android:title="Layouts">
         <menu>
@@ -60,8 +62,48 @@
                 android:title="VIN code" />
             <item android:id="@+id/gps"
                 android:title="GPS" />
+            <item android:id="@+id/temperature"
+                android:title="External Temperature" />
+            <item android:id="@+id/odometer"
+                android:title="Odometer" />
+            <item android:id="@+id/gear_status"
+                android:title="Gear Status" />
+            <item android:id="@+id/prndl"
+                android:title="PRNDL" />
         </menu>
     </item>
-    <item android:id="@+id/default_none"
-        android:title="Default"/>
+    <item android:id="@+id/nolayout"
+        android:title="No Layouts">
+        <menu>
+            <item android:id="@+id/text_fields"
+                android:title="text_fields"/>
+            <item android:id="@+id/primary_grapics"
+                android:title="Upload Primary Graphics"/>
+            <item android:id="@+id/graphic_secondary"
+                android:title="Graphic Secondary"/>
+            <item android:id="@+id/graphic_static"
+                android:title="Graphic Static"/>
+            <item android:id="@+id/upload_file"
+                android:title="Upload File"/>
+            <item android:id="@+id/alert"
+                android:title="Alert"/>
+            <item android:id="@+id/alert_static"
+                android:title="Alert Static"/>
+            <item android:id="@+id/scroll_message"
+                android:title="Scroll Message"/>
+            <item android:id="@+id/scroll_message_ua"
+                android:title="Scroll Message_ua"/>
+            <item android:id="@+id/remote_files"
+                android:title="Remote Files"/>
+        </menu>
+    </item>
+    <item android:id="@+id/compatibilities"
+        android:title="Compatibilities">
+        <menu>
+            <item android:id="@+id/image_fields"
+                android:title="Get Image fields"/>
+            <item android:id="@+id/compatibility_text_fields"
+            android:title="Get Text fields"/>
+        </menu>
+    </item>
 </menu>

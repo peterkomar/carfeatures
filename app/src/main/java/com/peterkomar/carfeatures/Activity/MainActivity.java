@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.peterkomar.carfeatures.BuildConfig;
 import com.peterkomar.carfeatures.Car.Commands;
 import com.peterkomar.carfeatures.R;
 
@@ -32,18 +33,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupMessagesChannel();
-
-        //connectToSDL();
-        manticore();
+        connectToSDL();
     }
 
     private void connectToSDL() {
-        SdlReceiver.queryForConnectedService(this);
-    }
-
-    private void manticore() {
-        Intent sdlServiceIntent = new Intent(this, SdlService.class);
-        startService(sdlServiceIntent);
+        if(BuildConfig.TRANSPORT.equals("MULTI") || BuildConfig.TRANSPORT.equals("MULTI_HB")) {
+            SdlReceiver.queryForConnectedService(this);
+        } else if(BuildConfig.TRANSPORT.equals("TCP")) {
+            Intent proxyIntent = new Intent(this, SdlService.class);
+            startService(proxyIntent);
+        }
     }
 
     private void setupMessagesChannel() {
@@ -164,6 +163,46 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
                 break;
 
+            case R.id.primary_grapics:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHICS_UPLOAD);
+                sendBroadcast(intent);
+                break;
+            case R.id.text_fields:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.TEXT_FIELDS);
+                sendBroadcast(intent);
+                break;
+            case R.id.graphic_secondary:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHIC_SECONDARY);
+                sendBroadcast(intent);
+                break;
+            case R.id.graphic_static:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.GRAPHIC_STATIC);
+                sendBroadcast(intent);
+                break;
+            case R.id.upload_file:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.UPLOAD_FILE);
+                sendBroadcast(intent);
+                break;
+            case R.id.alert:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.ALERT);
+                sendBroadcast(intent);
+                break;
+            case R.id.alert_static:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.ALERT_STATIC);
+                sendBroadcast(intent);
+                break;
+            case R.id.scroll_message:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.SCROLLABLE_MESSAGE);
+                sendBroadcast(intent);
+                break;
+            case R.id.scroll_message_ua:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.SCROLLABLE_MESSAGE_UA);
+                sendBroadcast(intent);
+                break;
+            case R.id.remote_files:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.REMOTE_FILES);
+                sendBroadcast(intent);
+                break;
 
             case R.id.fuel:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.FUEL);
@@ -187,6 +226,31 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.gps:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.GPS);
+                sendBroadcast(intent);
+                break;
+            case R.id.temperature:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_EXTERNAL_TEMPERATURE);
+                sendBroadcast(intent);
+                break;
+            case R.id.odometer:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_ODOMETER);
+                sendBroadcast(intent);
+                break;
+            case R.id.gear_status:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_GEAR_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.prndl:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_PRNDL);
+                sendBroadcast(intent);
+                break;
+
+            case R.id.image_fields:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_IMAGE_FIELDS);
+                sendBroadcast(intent);
+                break;
+            case R.id.compatibility_text_fields:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_TEXT_FIELDS);
                 sendBroadcast(intent);
                 break;
             default:

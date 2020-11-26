@@ -51,6 +51,10 @@ android {
             buildConfigField 'String', 'TRANSPORT', '"MULTI_HB"'
             buildConfigField 'String', 'SECURITY', '"OFF"'
         }
+        tcp {
+            buildConfigField 'String', 'TRANSPORT', '"TCP"'
+            buildConfigField 'String', 'SECURITY', '"OFF"'
+        }
     }
 
     compileOptions {

@@ -25,7 +25,8 @@ public class Templates extends CarManager {
         sdlManager.getScreenManager().setTextField1("Text Field 1");
         sdlManager.getScreenManager().setTextField2("Text Field 2");
         sdlManager.getScreenManager().setMediaTrackTextField("Media Track Field");
-        TemplateConfiguration templateConfiguration = new TemplateConfiguration().setTemplate(PredefinedLayout.DEFAULT.toString());
+        TemplateConfiguration templateConfiguration = new TemplateConfiguration();
+        templateConfiguration.setTemplate(PredefinedLayout.DEFAULT.toString());
         sdlManager.getScreenManager().changeLayout(templateConfiguration, success -> {
             if (success) {
                 Messages.info("Default OK");
@@ -95,14 +96,18 @@ public class Templates extends CarManager {
         sdlManager.getScreenManager().setTextField1("Text Field 1");
         sdlManager.getScreenManager().setTextField2("Text Field 2");
         sdlManager.getScreenManager().setMediaTrackTextField("Media Track Field");
-        TemplateConfiguration templateConfiguration = new TemplateConfiguration().setTemplate(PredefinedLayout.GRAPHIC_WITH_TEXT.toString());
-        sdlManager.getScreenManager().changeLayout(templateConfiguration, success -> {
-            if (success) {
-                Messages.info("GRAPHIC_WITH_TEXT OK");
-            } else {
-                Messages.info("GRAPHIC_WITH_TEXT FAIL");
+        TemplateConfiguration templateConfiguration = new TemplateConfiguration();
+        templateConfiguration.setTemplate(PredefinedLayout.GRAPHIC_WITH_TEXT.toString());
+        sdlManager.getScreenManager().changeLayout(templateConfiguration, new CompletionListener() {
+            @Override
+            public void onComplete(boolean success) {
+                if (success) {
+                    Messages.info("GRAPHIC_WITH_TEXT OK");
+                } else {
+                    Messages.info("GRAPHIC_WITH_TEXT FAIL");
+                }
+                sdlService.updateMessagesLog();
             }
-            sdlService.updateMessagesLog();
         });
         Picture carPicture = new Picture();
         sdlManager.getScreenManager().setPrimaryGraphic(carPicture.renderSmall());
