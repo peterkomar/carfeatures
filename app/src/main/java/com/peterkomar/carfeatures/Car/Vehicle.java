@@ -11,6 +11,7 @@ import com.smartdevicelink.proxy.rpc.GPSData;
 import com.smartdevicelink.proxy.rpc.GearStatus;
 import com.smartdevicelink.proxy.rpc.GetVehicleData;
 import com.smartdevicelink.proxy.rpc.GetVehicleDataResponse;
+import com.smartdevicelink.proxy.rpc.TireStatus;
 import com.smartdevicelink.proxy.rpc.enums.PRNDL;
 import com.smartdevicelink.proxy.rpc.listeners.OnRPCResponseListener;
 
@@ -80,12 +81,52 @@ public class Vehicle extends CarManager {
         sdlService.updateMessagesLog();
         vdRequest.setTirePressure(true);
         vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @SuppressLint("DefaultLocale")
             @Override
             public void onResponse(int correlationId, RPCResponse response) {
                 Messages.info("Response from car: " + response.getInfo());
                 sdlService.updateMessagesLog();
                 if(response.getSuccess()){
                     Messages.info("Pressure ok");
+
+                    TireStatus status = ((GetVehicleDataResponse) response).getTirePressure();
+                    String lf = status.getLeftFront().getStatus().toString();
+                    String lfv = "-";
+                    try {
+                        lfv = String.format("%.2f", status.getLeftFront().getPressure());
+                    } catch (Exception e) {
+                        lfv = e.getMessage();
+                    }
+                    Messages.info(String.format("Left Front: %s %s", lf, lfv));
+
+                    String rf = status.getRightFront().getStatus().toString();
+                    String rfv = "-";
+                    try {
+                        rfv = String.format("%.2f", status.getRightFront().getPressure());
+                    } catch (Exception e) {
+                        rfv = e.getMessage();
+                    }
+                    Messages.info(String.format("Right Front: %s %s", rf, rfv));
+
+                    String lr = status.getLeftRear().getStatus().toString();
+                    String lrv = "-";
+                    try {
+                        lrv = String.format("%.2f", status.getLeftRear().getPressure());
+                    } catch (Exception e) {
+                        lrv = e.getMessage();
+                    }
+                    Messages.info(String.format("Left Rear: %s %s", lr, lrv));
+
+                    String rr = status.getRightRear().getStatus().toString();
+                    String rrv = "-";
+                    try {
+                        rrv = String.format("%.2f", status.getRightRear().getPressure());
+                    } catch (Exception e) {
+                        rrv = e.getMessage();
+                    }
+                    Messages.info(String.format("Right Rear: %s %s", rr, rrv));
+
+
                 } else {
                     Messages.info("Pressure fail");
                 }
