@@ -244,6 +244,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_PRNDL);
                 sendBroadcast(intent);
                 break;
+            case R.id.body:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_BODY);
+                sendBroadcast(intent);
+                break;
 
             case R.id.image_fields:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_IMAGE_FIELDS);

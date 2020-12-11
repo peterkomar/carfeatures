@@ -70,6 +70,8 @@
                 android:title="Gear Status" />
             <item android:id="@+id/prndl"
                 android:title="PRNDL" />
+            <item android:id="@+id/body"
+                android:title="Body info" />
         </menu>
     </item>
     <item android:id="@+id/nolayout"

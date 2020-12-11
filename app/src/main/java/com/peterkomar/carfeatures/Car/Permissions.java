@@ -31,6 +31,14 @@ public class Permissions {
         }
         service.updateMessagesLog();
 
+        parameterAllowed = sdlManager.getPermissionManager().isPermissionParameterAllowed(FunctionID.GET_VEHICLE_DATA, GetVehicleData.KEY_BODY_INFORMATION);
+        if (parameterAllowed) {
+            Messages.info("Body info OK");
+        } else {
+            Messages.info("Body info FAIL");
+        }
+        service.updateMessagesLog();
+
         Messages.info("Get list of supported templates:");
         //get available templates list
         List<String> listTempl = sdlManager.getSystemCapabilityManager().getDefaultMainWindowCapability().getTemplatesAvailable();

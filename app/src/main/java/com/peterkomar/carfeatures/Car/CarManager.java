@@ -70,6 +70,7 @@ public class CarManager {
             case Commands.CAR_ODOMETER: vehicle.getOdometer(); break;
             case Commands.CAR_GEAR_STATUS: vehicle.getGearGearStatus(); break;
             case Commands.CAR_PRNDL: vehicle.getPrndl(); break;
+            case Commands.CAR_BODY: vehicle.getBodyInfo(); break;
 
             case Commands.COMPATIBILITY_IMAGE_FIELDS: compatibility.getSupportedImageFields(); break;
             case Commands.COMPATIBILITY_TEXT_FIELDS: compatibility.getSupportedTextFields(); break;

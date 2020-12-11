@@ -6,6 +6,7 @@ import com.peterkomar.carfeatures.Activity.Messages;
 import com.peterkomar.carfeatures.SmartDeviceLink.SdlService;
 import com.smartdevicelink.managers.SdlManager;
 import com.smartdevicelink.proxy.RPCResponse;
+import com.smartdevicelink.proxy.rpc.BodyInformation;
 import com.smartdevicelink.proxy.rpc.FuelRange;
 import com.smartdevicelink.proxy.rpc.GPSData;
 import com.smartdevicelink.proxy.rpc.GearStatus;
@@ -290,6 +291,35 @@ public class Vehicle extends CarManager {
                     sdlService.updateMessagesLog();
                 } else {
                     Messages.info("PRNDL fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getBodyInfo() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("Getting body info ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setBodyInformation(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    BodyInformation body = ((GetVehicleDataResponse) response).getBodyInformation();
+                    Messages.info("Park Brake Active: " + body.getParkBrakeActive());
+                    Messages.info("IgnitionStableStatus: " + body.getIgnitionStableStatus().toString());
+                    Messages.info("IgnitionStatus: " + body.getIgnitionStatus().toString());
+                    Messages.info("DriverDoorAjar: " + body.getDriverDoorAjar());
+                    Messages.info("PassengerDoorAjar: " + body.getPassengerDoorAjar());
+                    Messages.info("RearLeftDoorAjar: " + body.getRearLeftDoorAjar());
+                    Messages.info("RearRightDoorAjar: " + body.getRearRightDoorAjar());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("Body info: fail");
                 }
                 sdlService.updateMessagesLog();
             }

@@ -32,6 +32,7 @@ public class Commands {
     public static final int CAR_ODOMETER = 38;
     public static final int CAR_GEAR_STATUS = 39;
     public static final int CAR_PRNDL = 390;
+    public static final int CAR_BODY = 391;
 
 
     public static final int GRAPHICS_UPLOAD = 40;
