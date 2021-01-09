@@ -59,6 +59,7 @@ public class CarManager {
             case Commands.SCROLLABLE_MESSAGE: display.showScrollableMessage(); break;
             case Commands.SCROLLABLE_MESSAGE_UA: display.showScrollableMessageUA(); break;
             case Commands.REMOTE_FILES: display.getRemoveFiles(); break;
+            case Commands.TEST_CHARACTERS: display.testSupportedCharacters(); break;
 
             case Commands.FUEL: vehicle.getFuel(); break;
             case Commands.FUEL_RANGE: vehicle.getFuelRange(); break;

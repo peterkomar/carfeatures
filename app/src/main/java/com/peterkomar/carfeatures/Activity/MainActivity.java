@@ -203,6 +203,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.REMOTE_FILES);
                 sendBroadcast(intent);
                 break;
+            case R.id.test_charcters:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.TEST_CHARACTERS);
+                sendBroadcast(intent);
+                break;
 
             case R.id.fuel:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.FUEL);

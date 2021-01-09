@@ -45,6 +45,7 @@ public class Commands {
     public static final int SCROLLABLE_MESSAGE = 47;
     public static final int SCROLLABLE_MESSAGE_UA = 48;
     public static final int REMOTE_FILES = 49;
+    public static final int TEST_CHARACTERS = 411;
 
     public static final int COMPATIBILITY_IMAGE_FIELDS = 50;
     public static final int COMPATIBILITY_TEXT_FIELDS = 51;

@@ -97,6 +97,8 @@
                 android:title="Scroll Message_ua"/>
             <item android:id="@+id/remote_files"
                 android:title="Remote Files"/>
+            <item android:id="@+id/test_charcters"
+                android:title="Test Charactres"/>
         </menu>
     </item>
     <item android:id="@+id/compatibilities"

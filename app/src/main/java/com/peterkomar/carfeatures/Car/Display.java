@@ -216,4 +216,18 @@ public class Display extends CarManager {
         sdlService.updateMessagesLog();
     }
 
+    public void testSupportedCharacters() {
+        sdlManager.getScreenManager().beginTransaction();
+        sdlManager.getScreenManager().setTextField1("▼  ▲  ►");
+        sdlManager.getScreenManager().setTextField2("º █ ");
+        sdlManager.getScreenManager().commit(success -> {
+            if (success) {
+                Messages.info("Displayed characters text ok ");
+            } else {
+                Messages.info("Displayed characters text fail");
+            }
+            sdlService.updateMessagesLog();
+        });
+    }
+
 }
