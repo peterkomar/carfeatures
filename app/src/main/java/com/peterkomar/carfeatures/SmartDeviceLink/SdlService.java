@@ -59,7 +59,7 @@ public class SdlService extends Service {
 
 	private CarManager carManager = null;
 
-	private BroadcastReceiver commandReceiver;
+	private BroadcastReceiver commandReceiver = null;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -217,7 +217,7 @@ public class SdlService extends Service {
 					Messages.info("software:" + systemInfo.getSystemSoftwareVersion());
 					//updateMessagesLog();
 
-					return false;
+					return true;
 				}
 			};
 
