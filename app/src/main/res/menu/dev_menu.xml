@@ -7,6 +7,8 @@
         <menu>
             <item android:id="@+id/default_l"
                 android:title="default" />
+            <item android:id="@+id/default_with_text"
+                android:title="default with text" />
             <item android:id="@+id/media"
                 android:title="media" />
             <item android:id="@+id/non_media"

@@ -35,6 +35,7 @@ import com.smartdevicelink.transport.BaseTransportConfig;
 import com.smartdevicelink.transport.MultiplexTransportConfig;
 import com.smartdevicelink.transport.TCPTransportConfig;
 import com.smartdevicelink.util.DebugTool;
+import com.smartdevicelink.util.SystemInfo;
 import com.smartdevicelink.util.Version;
 
 import java.util.Vector;
@@ -46,12 +47,12 @@ public class SdlService extends Service {
 	private static final int FOREGROUND_SERVICE_ID = 550;
 
 	// Manticore
-	private static final int TCP_PORT = 14393;
-	private static final String DEV_MACHINE_IP_ADDRESS = "m.sdl.tools";
+	//private static final int TCP_PORT = 14393;
+	//private static final String DEV_MACHINE_IP_ADDRESS = "m.sdl.tools";
 
 	// Sync Emulator
-	//private static final int TCP_PORT = 12345;
-	//private static final String DEV_MACHINE_IP_ADDRESS =  "192.168.0.107";
+	private static final int TCP_PORT = 12345;
+	private static final String DEV_MACHINE_IP_ADDRESS =  "192.168.0.107";
 
 	// variable to create and call functions of the SyncProxy
 	private SdlManager sdlManager = null;
@@ -104,7 +105,9 @@ public class SdlService extends Service {
 
 	@Override
 	public void onDestroy() {
-		unregisterReceiver(commandReceiver);
+		if (commandReceiver != null) {
+			unregisterReceiver(commandReceiver);
+		}
 		Messages.info("Disconnected from SDL core");
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 			stopForeground(true);
@@ -200,6 +203,21 @@ public class SdlService extends Service {
 				public LifecycleConfigurationUpdate managerShouldUpdateLifecycle(
 						Language language, Language hmiLanguage) {
 					return null;
+				}
+
+				@Override
+				public boolean onSystemInfoReceived(SystemInfo systemInfo) {
+					Messages.info("Car info:");
+					Messages.info(systemInfo.getVehicleType().getModel());
+					Messages.info(systemInfo.getVehicleType().getMake());
+					Messages.info(systemInfo.getVehicleType().getModelYear());
+					Messages.info("");
+					Messages.info("System info:");
+					Messages.info("hardware:" + systemInfo.getSystemHardwareVersion());
+					Messages.info("software:" + systemInfo.getSystemSoftwareVersion());
+					//updateMessagesLog();
+
+					return false;
 				}
 			};
 

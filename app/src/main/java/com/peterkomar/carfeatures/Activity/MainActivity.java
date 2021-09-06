@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.DEFAULT_TEMPLATE);
                 sendBroadcast(intent);
                 break;
+            case R.id.default_with_text:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.DEFAULT_WITH_TEXT);
+                sendBroadcast(intent);
+                break;
             case R.id.default_none:
                 intent.putExtra(COMMAND_ACTION_NAME, 0);
                 sendBroadcast(intent);

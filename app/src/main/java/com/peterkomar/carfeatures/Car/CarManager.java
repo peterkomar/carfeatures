@@ -29,6 +29,7 @@ public class CarManager {
     public void runCommand(int command) {
         switch (command) {
             case Commands.DEFAULT_TEMPLATE: tempate.setDefaultTemplate(); break;
+            case Commands.DEFAULT_WITH_TEXT: tempate.setDefaultTextTemplateWithButtons(); break;
             case Commands.MEDIA: tempate.setMedia(); break;
             case Commands.NON_MEDIA: tempate.setNonMedia(); break;
             case Commands.ONSCREEN_PRESETS: tempate.setOnscreenPresets(); break;

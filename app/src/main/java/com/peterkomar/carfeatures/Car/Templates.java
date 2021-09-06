@@ -48,6 +48,62 @@ public class Templates extends CarManager {
         });
     }
 
+    public void setDefaultTextTemplateWithButtons() {
+        SoftButtonState textState = new SoftButtonState("statusTire", "Status", null);
+        SoftButtonObject softButtonObject = new SoftButtonObject("softButtonObject", Collections.singletonList(textState), textState.getName(), new SoftButtonObject.OnEventListener() {
+            @Override
+            public void onPress(SoftButtonObject softButtonObject, OnButtonPress onButtonPress) {
+                Messages.info("Click on Status button");
+                sdlService.updateMessagesLog();
+            }
+
+            @Override
+            public void onEvent(SoftButtonObject softButtonObject, OnButtonEvent onButtonEvent) {
+                Messages.info("OnButton event triggered");
+                sdlService.updateMessagesLog();
+
+            }
+        });
+
+        SoftButtonState pressureState = new SoftButtonState("pressureTire", "Pressure", null);
+        SoftButtonObject pressureButtonObject = new SoftButtonObject(
+                "pressButtonObject",
+                Collections.singletonList(pressureState),
+                pressureState.getName(),
+                new SoftButtonObject.OnEventListener() {
+                    @Override
+                    public void onPress(SoftButtonObject softButtonObject, OnButtonPress onButtonPress) {
+                        Messages.info("Click on Pressure button");
+
+                        sdlService.updateMessagesLog();
+                    }
+
+                    @Override
+                    public void onEvent(SoftButtonObject softButtonObject, OnButtonEvent onButtonEvent) {
+                        Messages.info("OnButton pressure event triggered");
+                        sdlService.updateMessagesLog();
+
+                    }
+                });
+
+
+        sdlManager.getScreenManager().beginTransaction();
+        sdlManager.getScreenManager().setTextField1("Text Field 1");
+        sdlManager.getScreenManager().setTextField2("Text Field 2");
+        sdlManager.getScreenManager().setTextField3("Text Field 3");
+        sdlManager.getScreenManager().setTextField4("Text Field 4");
+        sdlManager.getScreenManager().setMediaTrackTextField("Media Track Field");
+        sdlManager.getScreenManager().setSoftButtonObjects(Arrays.asList(softButtonObject, pressureButtonObject));
+        sdlManager.getScreenManager().commit(success -> {
+            if (success) {
+                Messages.info("DEFAULT OK");
+            } else {
+                Messages.info("DEFAULT Fail");
+            }
+            sdlService.updateMessagesLog();
+        });
+    }
+
     public void setMedia() {
         sdlManager.getScreenManager().beginTransaction();
         sdlManager.getScreenManager().setTextField1("Text Field 1");
