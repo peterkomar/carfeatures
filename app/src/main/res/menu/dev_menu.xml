@@ -2,6 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/default_none"
         android:title="Default"/>
+    <item android:id="@+id/system_compat"
+        android:title="Get system compatibility"/>
     <item android:id="@+id/layouts"
         android:title="Layouts">
         <menu>

@@ -5,9 +5,12 @@ import android.text.TextUtils;
 import com.peterkomar.carfeatures.Activity.Messages;
 import com.peterkomar.carfeatures.SmartDeviceLink.SdlService;
 import com.smartdevicelink.managers.SdlManager;
+import com.smartdevicelink.managers.lifecycle.SystemCapabilityManager;
 import com.smartdevicelink.protocol.enums.FunctionID;
 import com.smartdevicelink.proxy.rpc.GetVehicleData;
 import com.smartdevicelink.proxy.rpc.SdlMsgVersion;
+import com.smartdevicelink.proxy.rpc.SystemCapability;
+import com.smartdevicelink.proxy.rpc.WindowCapability;
 
 import java.util.List;
 
@@ -41,11 +44,21 @@ public class Permissions {
 
         Messages.info("Get list of supported templates:");
         //get available templates list
-        List<String> listTempl = sdlManager.getSystemCapabilityManager().getDefaultMainWindowCapability().getTemplatesAvailable();
-        if (listTempl != null) {
-            Messages.info(TextUtils.join("\n", listTempl));
+        SystemCapabilityManager m = sdlManager.getSystemCapabilityManager();
+        if (m != null) {
+            WindowCapability w = m.getDefaultMainWindowCapability();
+            if (w != null) {
+                List<String> listTempl = w.getTemplatesAvailable();
+                if (listTempl != null) {
+                    Messages.info(TextUtils.join("\n", listTempl));
+                } else {
+                    Messages.info("Not supported custom layouts");
+                }
+            } else {
+                Messages.info("getDefaultMainWindowCapability returns null");
+            }
         } else {
-            Messages.info("Not supported custom layouts");
+            Messages.info("getSystemCapabilityManager returns null");
         }
     }
 }

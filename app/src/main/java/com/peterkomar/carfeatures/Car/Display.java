@@ -98,7 +98,7 @@ public class Display extends CarManager {
     public void uploadFile() {
 
         int bytesAvailable = sdlManager.getFileManager().getBytesAvailable();
-        Messages.info("Avaiable storage: " + bytesAvailable);
+        Messages.info("Available storage: " + bytesAvailable);
 
         final SdlArtwork image = new SdlArtwork("artworkName", FileType.GRAPHIC_PNG, R.drawable.car_small, true);
 

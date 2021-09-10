@@ -22,6 +22,7 @@ public class Commands {
     public static final int LARGE_GRAPHIC_ONLY = 19;
     public static final int WEB_VIEW = 20;
     public static final int DEFAULT_WITH_TEXT = 21;
+    public static final int SYSTEM_DATA = 22;
 
     public static final int FUEL = 30;
     public static final int PRESSURE = 31;

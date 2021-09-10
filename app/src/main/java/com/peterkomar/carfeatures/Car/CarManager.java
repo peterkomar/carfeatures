@@ -76,6 +76,7 @@ public class CarManager {
 
             case Commands.COMPATIBILITY_IMAGE_FIELDS: compatibility.getSupportedImageFields(); break;
             case Commands.COMPATIBILITY_TEXT_FIELDS: compatibility.getSupportedTextFields(); break;
+            case Commands.SYSTEM_DATA: compatibility.getSystemData(); break;
 
             default:
                 setDefaultText();

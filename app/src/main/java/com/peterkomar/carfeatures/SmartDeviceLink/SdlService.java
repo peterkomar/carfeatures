@@ -47,12 +47,12 @@ public class SdlService extends Service {
 	private static final int FOREGROUND_SERVICE_ID = 550;
 
 	// Manticore
-	//private static final int TCP_PORT = 14393;
-	//private static final String DEV_MACHINE_IP_ADDRESS = "m.sdl.tools";
+	private static final int TCP_PORT = 11793;
+	private static final String DEV_MACHINE_IP_ADDRESS = "m.sdl.tools";
 
 	// Sync Emulator
-	private static final int TCP_PORT = 12345;
-	private static final String DEV_MACHINE_IP_ADDRESS =  "192.168.0.107";
+	//private static final int TCP_PORT = 12345;
+	//private static final String DEV_MACHINE_IP_ADDRESS =  "192.168.0.107";
 
 	// variable to create and call functions of the SyncProxy
 	private SdlManager sdlManager = null;
@@ -178,7 +178,6 @@ public class SdlService extends Service {
 							}
 							if (onHMIStatus.getHmiLevel() == HMILevel.HMI_FULL
 									&& onHMIStatus.getFirstRun()) {
-								Permissions.identifyPermissions(sdlManager, service);
 								carManager = new CarManager(sdlManager, service);
 								carManager.bootstrap();
 								setupCommandsChannel();

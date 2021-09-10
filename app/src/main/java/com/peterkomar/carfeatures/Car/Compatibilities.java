@@ -46,4 +46,8 @@ public class Compatibilities extends CarManager {
         }
         sdlService.updateMessagesLog();
     }
+
+    public void getSystemData() {
+        Permissions.identifyPermissions(sdlManager, sdlService);
+    }
 }
