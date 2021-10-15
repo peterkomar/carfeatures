@@ -6,14 +6,25 @@ import com.peterkomar.carfeatures.Activity.Messages;
 import com.peterkomar.carfeatures.SmartDeviceLink.SdlService;
 import com.smartdevicelink.managers.SdlManager;
 import com.smartdevicelink.proxy.RPCResponse;
+import com.smartdevicelink.proxy.rpc.AirbagStatus;
+import com.smartdevicelink.proxy.rpc.BeltStatus;
 import com.smartdevicelink.proxy.rpc.BodyInformation;
+import com.smartdevicelink.proxy.rpc.ClusterModeStatus;
+import com.smartdevicelink.proxy.rpc.DeviceStatus;
 import com.smartdevicelink.proxy.rpc.FuelRange;
 import com.smartdevicelink.proxy.rpc.GPSData;
 import com.smartdevicelink.proxy.rpc.GearStatus;
 import com.smartdevicelink.proxy.rpc.GetVehicleData;
 import com.smartdevicelink.proxy.rpc.GetVehicleDataResponse;
+import com.smartdevicelink.proxy.rpc.HeadLampStatus;
+import com.smartdevicelink.proxy.rpc.MyKey;
 import com.smartdevicelink.proxy.rpc.TireStatus;
+import com.smartdevicelink.proxy.rpc.enums.ComponentVolumeStatus;
+import com.smartdevicelink.proxy.rpc.enums.ElectronicParkBrakeStatus;
 import com.smartdevicelink.proxy.rpc.enums.PRNDL;
+import com.smartdevicelink.proxy.rpc.enums.TurnSignal;
+import com.smartdevicelink.proxy.rpc.enums.VehicleDataEventStatus;
+import com.smartdevicelink.proxy.rpc.enums.WiperStatus;
 import com.smartdevicelink.proxy.rpc.listeners.OnRPCResponseListener;
 
 import java.util.List;
@@ -52,6 +63,7 @@ public class Vehicle extends CarManager {
         Messages.info("Getting fuel range...");
         sdlService.updateMessagesLog();
         vdRequest.setFuelRange(true);
+        vdRequest.setInstantFuelConsumption(true);
         vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -320,6 +332,419 @@ public class Vehicle extends CarManager {
                     sdlService.updateMessagesLog();
                 } else {
                     Messages.info("Body info: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getInstantFuelConsumption() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getInstantFuelConsumption ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setInstantFuelConsumption(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Double value = ((GetVehicleDataResponse) response).getInstantFuelConsumption();
+                    Messages.info("InstantFuelConsumption: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("InstantFuelConsumption: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getFuelLevelState() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getFuelLevelState ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setFuelLevelState(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    ComponentVolumeStatus value = ((GetVehicleDataResponse) response).getFuelLevelState();
+                    Messages.info("FuelLevelState: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("FuelLevelState: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getBeltStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getBeltStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setBeltStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    BeltStatus value = ((GetVehicleDataResponse) response).getBeltStatus();
+                    Messages.info("BeltStatus: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("BeltStatus: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getDriverBraking() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getDriverBraking ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setDriverBraking(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    VehicleDataEventStatus value = ((GetVehicleDataResponse) response).getDriverBraking();
+                    Messages.info("DriverBraking: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("DriverBraking: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getWiperStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getWiperStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setWiperStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    WiperStatus value = ((GetVehicleDataResponse) response).getWiperStatus();
+                    Messages.info("WiperStatus: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("WiperStatus: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getHeadLampStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getHeadLampStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setHeadLampStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    HeadLampStatus value = ((GetVehicleDataResponse) response).getHeadLampStatus();
+                    Messages.info("HeadLampStatus: " + value.toString());
+                    Messages.info("AmbientLightStatus: " + value.getAmbientLightStatus().toString());
+                    Messages.info("HighBeamsOn: " + value.getHighBeamsOn().toString());
+                    Messages.info("LowBeamsOn: " + value.getLowBeamsOn().toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("HeadLampStatus: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getEngineTorque() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getEngineTorque ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setEngineTorque(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Double value = ((GetVehicleDataResponse) response).getEngineTorque();
+                    Messages.info("EngineTorque: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("EngineTorque: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getACCPedalPosition() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getACCPedalPosition ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setAccPedalPosition(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Double value = ((GetVehicleDataResponse) response).getAccPedalPosition();
+                    Messages.info("ACCPedalPosition: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("ACCPedalPosition: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getSteeringWheelAngle() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getSteeringWheelAngle ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setSteeringWheelAngle(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Double value = ((GetVehicleDataResponse) response).getSteeringWheelAngle();
+                    Messages.info("SteeringWheelAngle: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("SteeringWheelAngle: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getAirbagStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getAirbagStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setAirbagStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    AirbagStatus value = ((GetVehicleDataResponse) response).getAirbagStatus();
+                    Messages.info("AirbagStatus: " + value.toString());
+                    Messages.info("DriverAirbagDeployed: " + value.getDriverAirbagDeployed().toString());
+                    Messages.info("DriverKneeAirbagDeployed: " + value.getDriverKneeAirbagDeployed().toString());
+                    Messages.info("DriverCurtainAirbagDeployed: " + value.getDriverCurtainAirbagDeployed().toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("AirbagStatus: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getClusterModeStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getClusterModeStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setClusterModeStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    ClusterModeStatus value = ((GetVehicleDataResponse) response).getClusterModeStatus();
+                    Messages.info("ClusterModeStatus: " + value.toString());
+                    Messages.info("CarModeStatus: " + value.getCarModeStatus().toString());
+                    Messages.info("PowerModeStatus: " + value.getPowerModeStatus().toString());
+                    Messages.info("PowerModeActive: " + value.getPowerModeActive().toString());
+                    Messages.info("PowerModeQualificationStatus: " + value.getPowerModeQualificationStatus().toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("ClusterModeStatus: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getMykey() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getMykey ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setMyKey(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    MyKey value = ((GetVehicleDataResponse) response).getMyKey();
+                    Messages.info("Mykey: " + value.toString());
+                    Messages.info("E911Override: " + value.getE911Override().toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("Mykey: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getTurnSignal() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("getTurnSignal ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setTurnSignal(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    TurnSignal value = ((GetVehicleDataResponse) response).getTurnSignal();
+                    Messages.info("TurnSignal: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("TurnSignal: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getElectronicParkBrakeStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("ElectronicParkBrakeStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setElectronicParkBrakeStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    ElectronicParkBrakeStatus value = ((GetVehicleDataResponse) response).getElectronicParkBrakeStatus();
+                    Messages.info("ElectronicParkBrakeStatus: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("ElectronicParkBrakeStatus: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getRpm() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("RPM ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setRpm(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Integer value = ((GetVehicleDataResponse) response).getRpm();
+                    Messages.info("RPM: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("RPM: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getSpeed() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("Speed ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setSpeed(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    Double value = ((GetVehicleDataResponse) response).getSpeed();
+                    Messages.info("Speed: " + value.toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("Speed: fail");
+                }
+                sdlService.updateMessagesLog();
+            }
+        });
+        sdlManager.sendRPC(vdRequest);
+    }
+
+    public void getDeviceStatus() {
+        GetVehicleData vdRequest = new GetVehicleData();
+        Messages.info("DeviceStatus ...");
+        sdlService.updateMessagesLog();
+        vdRequest.setDeviceStatus(true);
+        vdRequest.setOnRPCResponseListener(new OnRPCResponseListener() {
+            @Override
+            public void onResponse(int correlationId, RPCResponse response) {
+                Messages.info("Response from car: " + response.getInfo());
+                sdlService.updateMessagesLog();
+                if(response.getSuccess()){
+                    DeviceStatus value = ((GetVehicleDataResponse) response).getDeviceStatus();
+                    Messages.info("DeviceStatus: " + value.toString());
+                    Messages.info("BattLevelStatus: " + value.getBattLevelStatus().toString());
+                    Messages.info("SignalLevelStatus: " + value.getSignalLevelStatus().toString());
+                    Messages.info("BtIconOn: " + value.getBtIconOn().toString());
+                    Messages.info("CallActive: " + value.getCallActive().toString());
+                    Messages.info("ECallEventActive: " + value.getECallEventActive().toString());
+                    Messages.info("MonoAudioOutputMuted: " + value.getMonoAudioOutputMuted().toString());
+                    Messages.info("PhoneRoaming: " + value.getPhoneRoaming().toString());
+                    Messages.info("PrimaryAudioSource: " + value.getPrimaryAudioSource().toString());
+                    Messages.info("StereoAudioOutputMuted: " + value.getStereoAudioOutputMuted().toString());
+                    Messages.info("TextMsgAvailable: " + value.getTextMsgAvailable().toString());
+                    Messages.info("VoiceRecOn: " + value.getVoiceRecOn().toString());
+                    sdlService.updateMessagesLog();
+                } else {
+                    Messages.info("DeviceStatus: fail");
                 }
                 sdlService.updateMessagesLog();
             }

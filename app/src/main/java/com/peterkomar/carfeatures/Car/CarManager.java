@@ -73,6 +73,23 @@ public class CarManager {
             case Commands.CAR_GEAR_STATUS: vehicle.getGearGearStatus(); break;
             case Commands.CAR_PRNDL: vehicle.getPrndl(); break;
             case Commands.CAR_BODY: vehicle.getBodyInfo(); break;
+            case Commands.CAR_INSTANT_FUEL_CONSUMPTION: vehicle.getInstantFuelConsumption(); break;
+            case Commands.CAR_FUEL_LEVEL_STATE: vehicle.getFuelLevelState(); break;
+            case Commands.CAR_BELT_STATUS: vehicle.getBeltStatus(); break;
+            case Commands.CAR_DRIVER_BRAKING: vehicle.getDriverBraking(); break;
+            case Commands.CAR_WIPER_STATUS: vehicle.getWiperStatus(); break;
+            case Commands.CAR_HEAD_LAMP_STATUS: vehicle.getHeadLampStatus(); break;
+            case Commands.CAR_ENGINE_TORQUE: vehicle.getEngineTorque(); break;
+            case Commands.CAR_ACC_PEDAL_POSITION: vehicle.getACCPedalPosition(); break;
+            case Commands.CAR_STEERING_WHEEL_ANGLE: vehicle.getSteeringWheelAngle(); break;
+            case Commands.CAR_AIRBAG_STATUS: vehicle.getAirbagStatus(); break;
+            case Commands.CAR_CLUSTER_MODE_STATUS: vehicle.getClusterModeStatus(); break;
+            case Commands.CAR_MYKEY: vehicle.getMykey(); break;
+            case Commands.CAR_TURN_SIGNAL: vehicle.getTurnSignal(); break;
+            case Commands.CAR_ELECTRONIC_PARKBRAKE_STATUS: vehicle.getElectronicParkBrakeStatus(); break;
+            case Commands.CAR_KEY_RPM: vehicle.getRpm(); break;
+            case Commands.CAR_KEY_SPEED: vehicle.getSpeed(); break;
+            case Commands.CAR_DEVICE_STATUS: vehicle.getDeviceStatus(); break;
 
             case Commands.COMPATIBILITY_IMAGE_FIELDS: compatibility.getSupportedImageFields(); break;
             case Commands.COMPATIBILITY_TEXT_FIELDS: compatibility.getSupportedTextFields(); break;

@@ -35,7 +35,24 @@ public class Commands {
     public static final int CAR_GEAR_STATUS = 39;
     public static final int CAR_PRNDL = 390;
     public static final int CAR_BODY = 391;
-
+    //new vehicle data
+    public static final int CAR_INSTANT_FUEL_CONSUMPTION = 340;
+    public static final int CAR_FUEL_LEVEL_STATE = 341;
+    public static final int CAR_BELT_STATUS = 342;
+    public static final int CAR_DRIVER_BRAKING = 343;
+    public static final int CAR_WIPER_STATUS = 344;
+    public static final int CAR_HEAD_LAMP_STATUS = 345;
+    public static final int CAR_ENGINE_TORQUE = 346;
+    public static final int CAR_ACC_PEDAL_POSITION = 347;
+    public static final int CAR_STEERING_WHEEL_ANGLE = 348;
+    public static final int CAR_AIRBAG_STATUS = 349;
+    public static final int CAR_CLUSTER_MODE_STATUS = 350;
+    public static final int CAR_MYKEY = 351;
+    public static final int CAR_TURN_SIGNAL = 352;
+    public static final int CAR_ELECTRONIC_PARKBRAKE_STATUS = 353;
+    public static final int CAR_KEY_RPM = 354;
+    public static final int CAR_KEY_SPEED = 355;
+    public static final int CAR_DEVICE_STATUS = 356;
 
     public static final int GRAPHICS_UPLOAD = 40;
     public static final int TEXT_FIELDS = 41;

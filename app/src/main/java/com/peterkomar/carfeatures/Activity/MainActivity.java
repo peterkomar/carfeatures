@@ -256,6 +256,74 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_BODY);
                 sendBroadcast(intent);
                 break;
+            case R.id.CAR_INSTANT_FUEL_CONSUMPTION:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_INSTANT_FUEL_CONSUMPTION);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_FUEL_LEVEL_STATE:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_FUEL_LEVEL_STATE);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_BELT_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_BELT_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_DRIVER_BRAKING:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_DRIVER_BRAKING);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_WIPER_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_WIPER_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_HEAD_LAMP_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_HEAD_LAMP_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_ENGINE_TORQUE:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_ENGINE_TORQUE);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_ACC_PEDAL_POSITION:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_ACC_PEDAL_POSITION);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_STEERING_WHEEL_ANGLE:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_STEERING_WHEEL_ANGLE);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_AIRBAG_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_AIRBAG_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_CLUSTER_MODE_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_CLUSTER_MODE_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_MYKEY:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_MYKEY);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_TURN_SIGNAL:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_TURN_SIGNAL);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_ELECTRONIC_PARKBRAKE_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_ELECTRONIC_PARKBRAKE_STATUS);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_KEY_RPM:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_KEY_RPM);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_KEY_SPEED:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_KEY_SPEED);
+                sendBroadcast(intent);
+                break;
+            case R.id.CAR_DEVICE_STATUS:
+                intent.putExtra(COMMAND_ACTION_NAME, Commands.CAR_DEVICE_STATUS);
+                sendBroadcast(intent);
+                break;
 
             case R.id.image_fields:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.COMPATIBILITY_IMAGE_FIELDS);

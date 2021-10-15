@@ -47,7 +47,7 @@ public class SdlService extends Service {
 	private static final int FOREGROUND_SERVICE_ID = 550;
 
 	// Manticore
-	private static final int TCP_PORT = 11793;
+	private static final int TCP_PORT = 17901;
 	private static final String DEV_MACHINE_IP_ADDRESS = "m.sdl.tools";
 
 	// Sync Emulator
