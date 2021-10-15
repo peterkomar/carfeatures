@@ -166,6 +166,12 @@ public class Vehicle extends CarManager {
                     Messages.info(String.format("Oil Life: %f", oillife));
                 } else {
                     Messages.info("Error getting oil life");
+                    Float oillife = ((GetVehicleDataResponse) response).getEngineOilLife();
+                    if (oillife != null) {
+                        Messages.info("Oil Life: " + oillife.toString());
+                    } else {
+                        Messages.info("Oil Life is NULL");
+                    }
                 }
                 sdlService.updateMessagesLog();
             }
