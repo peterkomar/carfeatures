@@ -10,6 +10,11 @@ public class Messages {
         Messages.msg.append(String.format("Info: %s\n", message));
     }
 
+    public static void cleanMessages() {
+        Messages.msg = null;
+        Messages.msg = new StringBuilder();
+    }
+
     public static void error(String message) {
         if (Messages.msg == null) {
             Messages.msg = new StringBuilder();

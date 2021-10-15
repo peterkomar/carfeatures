@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(COMMAND_ACTION);
         // Handle item selection
         switch (item.getItemId()) {
+            case R.id.clean_logs:
+                Messages.cleanMessages();
+                TextView view = findViewById(R.id.textView);
+                view.setText(Messages.getStrLogs());
+                break;
             case R.id.default_l:
                 intent.putExtra(COMMAND_ACTION_NAME, Commands.DEFAULT_TEMPLATE);
                 sendBroadcast(intent);
